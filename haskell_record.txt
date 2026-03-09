@@ -82,7 +82,113 @@ zero. you can come true by the following way using Haskell
 	>take 10 [triple x | x <- [1..] , triple x > 0]
 	[3,6,9,12,15,18,21,24,27,30]
 
-    aaa
+##############
+	ghci> :{
+	ghci| describe "wumuwu" = "the first"
+	ghci| describe "llp" = "no, you must be stronger"	
+	ghci| describe "llyy" = "more mony than god"
+	ghci| :}
+	ghci> decribe "llp"
+        "no, you must be stronger"
+
+################函数选择
+	ghci> :{
+	ghci| listFunction [] = "Empty"
+	ghci| listFunction (x:[]) = "Only One!"
+	ghci| listFunction (x:y:[]) = "Two!"
+	ghci| listFunction (x:y:_) = "More than two"	
+	ghci| :}
+	ghci> listFunction [1]
+	"Only One!"
+	ghci> listFunction [3]
+	"Only One!"
+	ghci> listFunction [3,1]
+	"Two!"
+	ghci> listFunction [1,2,3]
+	"More than two"
+	ghci> listFunction [1,2,3,5,5]
+	"More than two"
+
+
+############Function + List = demo_1
+	ghci> :{
+	ghci| listFunction [] = "Empty"
+	ghci| listFunction (x:[]) = "Only One!"
+	ghci| listFunction (x:y:[]) = "Two!"
+	ghci| listFunction (x:y:_) = "More than two"
+	ghci| :}
+	ghci> listFunction [1]
+	"Only One!"
+	ghci> listFunction [3]
+	"Only One!"
+	ghci> listFunction [3,1]
+	"Two!"
+	ghci> listFunction [1,2,3]
+	"More than two"
+	ghci> listFunction [1,2,3,5,5]
+	"More than two"
+
+################### Recursion_Application_Chaper######################
+	ghci> :{
+	ghci| minInList [x] = x
+	ghci| minInList (x:xs) = min x (minInList xs)
+	ghci| :}
+     
+        ghci> minInList [x `mod` 3 | x <- [1,4..10]]
+        1
+
+ ################ Pattern Matching to come true Reverse List
+	ghci> :{
+	ghci| reverse []=[]
+	ghci| reverse [x] = [x]
+	ghci| reverse (x:xs) = reverse xs ++ [x]
+	ghci| :}
+        
+        >[1,2,2,2,2,2,3,4]
+        [4,3,2,2,2,2,2,1]
+	
+	reverse [1,2,3,4]
+	= reverse [2,3,4] ++ [1]
+	= (reverse [3,4] ++ [2]) ++ [1]
+	= ((reverse [4] ++ [3]) ++ [2]) ++ [1]
+	= (([4] ++ [3]) ++ [2]) ++ [1]
+	= ([4,3] ++ [2]) ++ [1]
+	= [4,3,2] ++ [1]
+	= [4,3,2,1]
+
+###############QucikSort using Pattern_Match
+	ghci> :{
+	ghci| quicksort [] = []
+	ghci| quicksort (x:xs) = (quicksort [y| y <- xs , y < x ]) ++ [x] ++ (quicksort [y | 	y <- xs , y >= x])
+	ghci| :}
+
+       ghci> quicksort [2,2,4,5,6,7,9]
+	[2,2,4,5,6,7,9]
+	
+  ##     Reverse_QuickSort_Pattern_Match_black_magic_start:
+       > quicksort (reverse[1..9])
+        [1,2,3,4,5,6,7,8,9]
+
+  ##     Check_Type
+       :t distance
+       distance :: Floating a => a -> a -> a
+
+   ## interpret "类型类"
+	length :: Floating a => (a -> (a -> (a)))
+   ## 柯里化：？吃豆子？
+   ##	reverse [1,2,3,4]
+   ##	= reverse [2,3,4] ++ [1]
+   ##	= (reverse [3,4] ++ [2]) ++ [1]
+   ##	= ((reverse [4] ++ [3]) ++ [2]) ++ [1]
+   ##	= (([4] ++ [3]) ++ [2]) ++ [1]
+   ##	= ([4,3] ++ [2]) ++ [1]
+   ##	= [4,3,2] ++ [1]
+   ##	= [4,3,2,1]
+
+##########explain_aply_function_aply
+        >f = distance 2
+        >f 3
+	3.605551275463989     
 
 
 
