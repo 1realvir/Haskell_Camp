@@ -82,6 +82,9 @@ zero. you can come true by the following way using Haskell
 	>take 10 [triple x | x <- [1..] , triple x > 0]
 	[3,6,9,12,15,18,21,24,27,30]
 
+    aaa
+
+
 
 
 
