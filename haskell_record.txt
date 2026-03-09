@@ -1,0 +1,91 @@
+函数：g x
+      f x y 
+
+运算符： 
+	+ - * /
+	not
+	< > == /=
+	mod
+	mod_demo:
+		6 `mod` 2
+		mod 6 2
+		 
+列表：
+	>[1,2,3,4]
+	>[1,2,3,4] ++ [5]
+	>1:[1,2,3,4]
+	[1,1,2,3,4]
+	>[2,3,4,5]:1
+	error:
+	>take 2 [1,2,3,4]
+	[1,2]
+	>drop 2 [1,2,3,4]
+ 	[3,4]
+	>tail [1,2,3,4,5]
+	[2,3,4,5]
+	>init [1,2,3,4,5]
+	[1,2,3,4]
+	>last [1,2,3,4,5]
+	5
+#########judge_one_element_is_in_the_list?
+	>elem 2 [1,2,3,4]
+	True
+	>6 `elem` [1,2,3,4]
+	Fale
+#########?
+
+#########take_the_second_element:!!
+	>[1,2,3,4] !! 2
+	3
+#########!!
+	
+	>[1..5]
+	[1,2,3,4,5]
+
+	>[1,3..5]
+	[1,3,5]
+
+	>[1,3..11]
+	[1,3,5,7,9,11]
+
+	>[x*2 | x <- [1..10], x * 2 >= 12]
+        [12,14,16,18,20]
+
+	>[x*2 | x <- [1..10],x `mod` 2 == 1]
+
+#########无穷序列
+	>[1..]
+       
+#########if need take the numbers which from 1 start and the numbers'
+feature is that the tail is 7.Also,when it can be mod by 10,the result is
+zero. you can come true by the following way using Haskell
+	>take 10 [x | x <- [1..],x `mod` 7 == 0 || x `mod` 10 == 7 ]
+	[7,14,17,21,27,28,35,37,42,47,49,56,57,63,67,70,77,84,87,91]
+
+        >"Hello world"
+        "Hello world"
+
+	>"Hello world" !! 2
+	'l'
+	
+	>take 5 "Hello world"
+	"Hello"
+
+	>triple x = 3 * x
+	>triple 3
+	9
+
+	组合技能：
+	>take 10 [x | x <- [1..] , triple x > 10]
+       	[1,2,3,4,5,6,7,8,9,10]
+
+	>take 10 [triple x | x <- [1..] , triple x > 0]
+	[3,6,9,12,15,18,21,24,27,30]
+
+
+
+
+
+
+
+         
