@@ -1,0 +1,1 @@
+main = print(take 5 ([1 .. 10])) 
